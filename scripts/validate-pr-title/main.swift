@@ -14,10 +14,12 @@ func validateTitle(_ title: String) -> Bool {
 func main() {
     let title = CommandLine.arguments[1]
 
+    print("Validating title: [\(title)]")    
+
     if validateTitle(title) {
-        print("PR Title is: [\(title)]")
+        print("PR Title is valid! :)")
     } else {
-        print("PR Title Doesn't match the pattern")
+        print("PR Title Doesn't match the pattern :(")
         print("Please follow the pattern: Day <day_number> | <description>")
         exit(1)
     }
