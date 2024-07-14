@@ -1,5 +1,9 @@
 import Foundation
 
+enum ValidationError: Error {
+    case invalidTitle
+}
+
 func validateTitle(_ title: String) -> Bool {
     let pattern = "^Day \\d+ \\| .+$"
     let regex = try! NSRegularExpression(pattern: pattern)
@@ -12,5 +16,8 @@ let title = "Day 1 | Description"
 if validateTitle(title) {
     print("Valid string")
 } else {
-    print("Invalid string")
+    print("PR Title Doesn't match the pattern")
+    print("Please follow the pattern: Day <day_number> | <description>")
+    throw ValidationError.invalidTitle
+    
 }

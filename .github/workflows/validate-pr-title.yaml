@@ -36,4 +36,5 @@ jobs:
           PR_TITLE: ${{ github.event.pull_request.title }}
         run: |
           echo $PR_TITLE
-          swift validate-pr-title.swift "{{ env.PR_TITLE}}"
+          cd scripts/validate-pr-title/
+          swift main.swift "{{ env.PR_TITLE}}"
