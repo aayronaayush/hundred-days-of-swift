@@ -1,0 +1,40 @@
+name: Validate PR Title
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+jobs:
+  Validate-PR-Title:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            clang \
+            libicu-dev \
+            libcurl4-openssl-dev \
+            libssl-dev \
+            libpython2.7 \
+            libstdc++-10-dev
+
+      - name: Install Swift
+        run: |
+          SWIFT_VERSION=5.7.1
+          wget https://swift.org/builds/swift-$SWIFT_VERSION-release/ubuntu2004/swift-$SWIFT_VERSION-RELEASE/swift-$SWIFT_VERSION-RELEASE-ubuntu20.04.tar.gz
+          tar xzf swift-$SWIFT_VERSION-RELEASE-ubuntu20.04.tar.gz
+          sudo mv swift-$SWIFT_VERSION-RELEASE-ubuntu20.04 /usr/local/swift
+          export PATH=$PATH:/usr/local/swift/usr/bin
+
+      - name: Run Swift script
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          echo $PR_TITLE
+          cd scripts/validate-pr-title/
+          swift main.swift "${{ env.PR_TITLE }}"
