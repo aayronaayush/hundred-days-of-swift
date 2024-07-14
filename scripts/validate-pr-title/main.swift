@@ -11,10 +11,10 @@ func validateTitle(_ title: String) -> Bool {
     return regex.firstMatch(in: title, options: [], range: range) != nil
 }
 
-// Example usage
-let title = "Day 1 | Description"
+print("Validating PR Title: [\(title)]")
+
 if validateTitle(title) {
-    print("Valid string")
+    print("PR Title is ")
 } else {
     print("PR Title Doesn't match the pattern")
     print("Please follow the pattern: Day <day_number> | <description>")
