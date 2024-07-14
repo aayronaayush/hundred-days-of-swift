@@ -1,4 +1,5 @@
 import Foundation
+import Darwin
 
 enum ValidationError: Error {
     case invalidTitle
@@ -11,13 +12,16 @@ func validateTitle(_ title: String) -> Bool {
     return regex.firstMatch(in: title, options: [], range: range) != nil
 }
 
-print("Validating PR Title: [\(title)]")
+func main() {
+    let title = CommandLine.arguments[1]
 
-if validateTitle(title) {
-    print("PR Title is ")
-} else {
-    print("PR Title Doesn't match the pattern")
-    print("Please follow the pattern: Day <day_number> | <description>")
-    throw ValidationError.invalidTitle
-    
+    if validateTitle(title) {
+        print("PR Title is: [\(title)]")
+    } else {
+        print("PR Title Doesn't match the pattern")
+        print("Please follow the pattern: Day <day_number> | <description>")
+        exit(1)
+    }
 }
+
+main()
