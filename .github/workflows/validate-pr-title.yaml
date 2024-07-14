@@ -29,7 +29,7 @@ jobs:
           wget https://swift.org/builds/swift-$SWIFT_VERSION-release/ubuntu2004/swift-$SWIFT_VERSION-RELEASE/swift-$SWIFT_VERSION-RELEASE-ubuntu20.04.tar.gz
           tar xzf swift-$SWIFT_VERSION-RELEASE-ubuntu20.04.tar.gz
           sudo mv swift-$SWIFT_VERSION-RELEASE-ubuntu20.04 /usr/local/swift
-          echo "::add-path::/usr/local/swift/usr/bin"
+          export PATH=$PATH:/usr/local/swift/usr/bin
 
       - name: Run Swift script
         env:
