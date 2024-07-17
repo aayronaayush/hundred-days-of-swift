@@ -27,3 +27,11 @@ While completing the dice number generator app, I learn how to attach function t
 ### Day 3 (15th July 2024)
 
 Today I went over the basic of watched videos on Swift basic. We went over variables, arrays and string interpolation and also how approached on generating random numbers
+
+### Day 4 (16th July 2024)
+
+Today I completed the magic 8 ball challenge of the course
+
+### Day 5 (17th July 2024)
+
+Started with auto layout and constraints
