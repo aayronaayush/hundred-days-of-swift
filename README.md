@@ -35,3 +35,7 @@ Today I completed the magic 8 ball challenge of the course
 ### Day 5 (17th July 2024)
 
 Started with auto layout and constraints
+
+### Day 6 (18th July 2024)
+
+Complete auto layout module and successfully completed auto layout challenge
